@@ -30,9 +30,8 @@ func main() {
 		port = "8080"
 	}
 
+	log.Printf("Serving HTTP connections on port %s\n", port)
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/favicon.ico", http.NotFound)
-	http.ListenAndServe(":"+port, nil)
-
-	log.Printf("Serving HTTP connections on port %s", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
