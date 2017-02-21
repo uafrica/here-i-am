@@ -1,8 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -47,10 +45,4 @@ func TestIndexHandlerJson(t *testing.T) {
 	req := getRequest(t)
 	req.Header.Set("Content-Type", "application/json")
 	testBodyAndContentType(t, req, `{"status": "Here I am!"}`, "application/json")
-}
-
-func TestMain(t *testing.T) {
-	log.SetOutput(ioutil.Discard)
-
-	main()
 }
