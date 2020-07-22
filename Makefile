@@ -1,9 +1,9 @@
 .PHONY: check
-check: vet test
+check: lint test
 
-.PHONY: vet
-vet:
-	go vet ./...
+.PHONY: lint
+lint:
+	golangci-lint run
 
 .PHONY: test
 test:

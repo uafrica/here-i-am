@@ -8,11 +8,15 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Go
-        uses: actions/setup-go@v2
+      - uses: actions/setup-go@v2
         with:
           go-version: "^1.14"
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Checks
-        run: make check
+      - uses: actions/checkout@v2
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.29
+
+      - name: Run tests
+        run: go test ./...

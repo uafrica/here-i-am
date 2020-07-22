@@ -17,5 +17,5 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", ct)
-	io.WriteString(w, out)
+	io.WriteString(w, out) // nolint:errcheck
 }
